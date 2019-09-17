@@ -1,3 +1,4 @@
+// pokedex
 var respository = [
   {
     name: 'Bulbasaur',
@@ -33,6 +34,7 @@ function printArrayDetails(pokemonList) {
 
 printArrayDetails(respository);
 
+// functions
 function divide(divided, divisor) {
   if (divisor === 0) {
     return 'You’re trying to divide by zero.'
@@ -43,3 +45,19 @@ function divide(divided, divisor) {
 }
 
 console.log(divide(10, 10));
+
+// forEach loops
+var names = ['John', 'Charlie', 'Aimee'];
+names.forEach(function(currentName) {
+  console.log(currentName);
+});
+
+var anne = {
+  name: 'Anne',
+  age: 38,
+  children: []
+};
+
+Object.keys(anne).forEach(function(property) {
+  console.log(anne[property]);
+});
