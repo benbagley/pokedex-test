@@ -21,10 +21,25 @@ var respository = [
   }
 ]
 
-for (var i = 0; i < respository.length; i++) {
-  document.write('<br />', 'Name: ' + respository[i].name, ' height: ' + respository[i].height);
+function printArrayDetails(pokemonList) {
+  for (var i = 0; i < pokemonList.length; i++) {
+    document.write('<br />', 'Name: ' + pokemonList[i].name, ' height: ' + pokemonList[i].height);
 
-  if (i < respository.length && respository[i].height > 1.00) {
-    document.write(' - wow that\'s big');
+    if (i < pokemonList.length && pokemonList[i].height > 1.00) {
+      document.write(' - wow that\'s big');
+    }
   }
 }
+
+printArrayDetails(respository);
+
+function divide(divided, divisor) {
+  if (divisor === 0) {
+    return 'You’re trying to divide by zero.'
+  } else {
+    var result = divisor / divided
+    return result;
+  }
+}
+
+console.log(divide(10, 10));
