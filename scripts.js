@@ -1,5 +1,5 @@
 // pokedex
-var respository = [
+var repository = [
   {
     name: 'Bulbasaur',
     height: '2.04',
@@ -22,17 +22,13 @@ var respository = [
   }
 ]
 
-function printArrayDetails(pokemonList) {
-  for (var i = 0; i < pokemonList.length; i++) {
-    document.write('<br />', 'Name: ' + pokemonList[i].name, ' height: ' + pokemonList[i].height);
+repository.forEach(function(property) {
+  document.write('<br />', 'Name: ' + property.name, ' height: ' + property.height);
 
-    if (i < pokemonList.length && pokemonList[i].height > 1.00) {
-      document.write(' - wow that\'s big');
-    }
+  if (property.length && property.height > 1.00) {
+    document.write(' - wow that\'s big');
   }
-}
-
-printArrayDetails(respository);
+})
 
 // functions
 function divide(divided, divisor) {
