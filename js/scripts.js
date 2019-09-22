@@ -65,19 +65,20 @@ var pokemonRepository = (function() {
       "p-4",
     ); // summary class names
 
+    summary.classList.add('btn'); // add a class name to all 'summarys' via the 'summary' variable
     details.appendChild(summary); // append the 'summary' into the 'li' list items
     $list.appendChild(details) // append the 'li' list items along with all child elements into the 'ul' list
 
     // add event click using targetting the 'show details' function above to console.log the pokemon name when clicked
-    summary.addEventListener('click', function() {
-      showDetails(pokemon);
+    summary.addEventListener('click', function(e) {
+      showDetails(pokemon, e);
     });
   };
 
 
   // Creating modal content
-  function showModal(item) {
-    var pokemonItem = document.querySelector('details');
+  function showModal(item, e) {
+    var pokemonItem = e.srcElement.parentNode;
     var modal = document.createElement('div');
 
     modal.classList.add(
@@ -117,20 +118,35 @@ var pokemonRepository = (function() {
     modal.appendChild(heightElement);
     modal.appendChild(typesElement);
     pokemonItem.appendChild(modal);
-
-    // adds class to show the modal
-    modal.classList.add('is-visible');
   }
 
   // hides modal when you click on close button
   function hideModal() {
-    var $modalContainer = document.querySelector('details div');
+    var $modalContainer = document.querySelector('#modal-container');
     $modalContainer.classList.remove('is-visible');
   }
 
-  function showDetails(item) {
+  // Hides modal when clicked on ESC on keyboard
+  window.addEventListener('keydown', (e) => {
+    var $modalContainer = document.querySelector('#modal-container');
+
+    if ( e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
+      hideModal();
+    }
+  });
+
+  // Hides modal if clicked outside of it
+  var $modalContainer = document.querySelector('.pokemon-list');
+  $modalContainer.addEventListener('click', (e) => {
+    var target = e.target;
+    if (target === $modalContainer) {
+      hideModal();
+    }
+  });
+
+  function showDetails(item, e) {
     pokemonRepository.loadDetails(item).then(function () {
-      showModal(item);
+      showModal(item, e);
       console.log(item)
     });
   };
