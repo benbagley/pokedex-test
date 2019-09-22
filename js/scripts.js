@@ -126,24 +126,6 @@ var pokemonRepository = (function() {
     $modalContainer.classList.remove('is-visible');
   }
 
-  // Hides modal when clicked on ESC on keyboard
-  window.addEventListener('keydown', (e) => {
-    var $modalContainer = document.querySelector('#modal-container');
-
-    if ( e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
-      hideModal();
-    }
-  });
-
-  // Hides modal if clicked outside of it
-  var $modalContainer = document.querySelector('.pokemon-list');
-  $modalContainer.addEventListener('click', (e) => {
-    var target = e.target;
-    if (target === $modalContainer) {
-      hideModal();
-    }
-  });
-
   function showDetails(item, e) {
     pokemonRepository.loadDetails(item).then(function () {
       showModal(item, e);
