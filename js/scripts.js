@@ -6,22 +6,22 @@ var pokemonRepository = (function() {
   // Loading data from external API
   function loadList() {
     return fetch(apiUrl)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(json) {
-        json.results.forEach(function(item) {
-          var pokemon = {
-            name: item.name,
-            detailsUrl: item.url
-          };
-          add(pokemon);
-          console.log(item);
-        });
-      })
-      .catch(function(e) {
-        console.log(e);
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json) {
+      json.results.forEach(function(item) {
+        var pokemon = {
+          name: item.name,
+          detailsUrl: item.url
+        };
+        add(pokemon);
+        console.log(item);
       });
+    })
+    .catch(function(e) {
+      console.log(e);
+    });
   }
 
   // Get the pokemon details using the Url from the pokemon object in the parameter
