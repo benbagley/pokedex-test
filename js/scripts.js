@@ -57,7 +57,6 @@ var pokemonRepository = (function() {
   // Creating modal content
   function showModal(item) {
     var $modalContainer = document.querySelector('#modal-container');
-
     // Clearing all existing modal content
     $modalContainer.innerHTML = '';
 
@@ -111,9 +110,7 @@ var pokemonRepository = (function() {
   window.addEventListener('keydown', (e) => {
     var $modalContainer = document.querySelector('#modal-container');
 
-    if (
-      e.key === 'Escape' && $modalContainer.classList.contains('is-visible')
-    ) {
+    if ( e.key === 'Escape' && $modalContainer.classList.contains('is-visible')) {
       hideModal();
     }
   });
