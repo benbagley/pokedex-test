@@ -120,12 +120,6 @@ var pokemonRepository = (function() {
     pokemonItem.appendChild(modal);
   }
 
-  // hides modal when you click on close button
-  function hideModal() {
-    var $modalContainer = document.querySelector('#modal-container');
-    $modalContainer.classList.remove('is-visible');
-  }
-
   function showDetails(item, e) {
     pokemonRepository.loadDetails(item).then(function () {
       showModal(item, e);
